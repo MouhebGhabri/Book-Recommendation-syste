@@ -9,7 +9,8 @@ similarity_scores = pickle.load(open('similarity_scores.pkl','rb'))
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/all')
+
 def index():
     return render_template('index.html',
                            book_name = list(popular_df['Book-Title'].values),
@@ -44,4 +45,4 @@ def recommend():
     return render_template('recommend.html',data=data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0', port=8080)
